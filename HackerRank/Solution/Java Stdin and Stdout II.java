@@ -5,7 +5,6 @@ import java.util.Scanner;
 /**
  * https://www.hackerrank.com/challenges/java-stdin-stdout/problem?isFullScreen=true
  * @author Akash Prajapati
- *
  */
 public class App 
 {
