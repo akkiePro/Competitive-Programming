@@ -23,33 +23,32 @@ public class RomanToInteger {
  * self solution
  */
 class Solution {
-    final char[] romanLiterals = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
-    final Map<Character, Integer> romans = new HashMap<>();
+    final Map<Character, Integer> romanNumerals = new HashMap<>();
     public Solution() {
-        romans.put('I', 1);
-        romans.put('V', 5);
-        romans.put('X', 10);
-        romans.put('L', 50);
-        romans.put('C', 100);
-        romans.put('D', 500);
-        romans.put('M', 1000);
+        romanNumerals.put('I', 1);
+        romanNumerals.put('V', 5);
+        romanNumerals.put('X', 10);
+        romanNumerals.put('L', 50);
+        romanNumerals.put('C', 100);
+        romanNumerals.put('D', 500);
+        romanNumerals.put('M', 1000);
     }
     // MCMXCIV
     public int romanToInt(String s) {
         if (s.isEmpty())
             throw new RuntimeException("Empty/No Roman Numeral found...");
         else if (s.length() == 1)
-            return romans.get(s.charAt(0));
+            return romanNumerals.get(s.charAt(0));
         else {
             char current = s.charAt(s.length()-1);
             char next = s.charAt(s.length()-2);
-            if (romans.get(current) > romans.get(next))
+            if (romanNumerals.get(current) > romanNumerals.get(next))
                 if (s.length() > 2)
-                    return romans.get(current) - romans.get(next) + romanToInt(s.substring(0, s.length()-2));
+                    return romanNumerals.get(current) - romanNumerals.get(next) + romanToInt(s.substring(0, s.length()-2));
                 else
-                    return romans.get(current) - romans.get(next);
+                    return romanNumerals.get(current) - romanNumerals.get(next);
             else
-                return romans.get(current) + romanToInt(s.substring(0, s.length()-1));
+                return romanNumerals.get(current) + romanToInt(s.substring(0, s.length()-1));
         }
     }
 }
